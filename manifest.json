@@ -1,0 +1,21 @@
+{
+  "short_name": "Fearlessalan",
+  "name": "Fearlessalan'sBrain",
+  "description": "Fearlessalan'sBrain : Learning to think. Nous proposons des solutions algorithmiques innovantes pour transformer vos défis en opportunités. Experts en résolution de problèmes complexes pour les entreprises.",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192x192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ]
+}
