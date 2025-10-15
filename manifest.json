@@ -4,8 +4,8 @@
   "description": "Fearlessalan'sBrain : Learning to think. Nous proposons des solutions algorithmiques innovantes pour transformer vos défis en opportunités. Experts en résolution de problèmes complexes pour les entreprises.",
   "start_url": "/?source=pwa",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#212121",
+  "theme_color": "#ff9800",
   "icons": [
     {
       "src": "/assets/icons/icon-192x192.svg",
