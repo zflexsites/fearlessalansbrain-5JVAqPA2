@@ -8,13 +8,13 @@
   "theme_color": "#0084ff",
   "icons": [
     {
-      "src": "/assets/icons/icon-192x192.svg",
-      "type": "image/svg+xml",
+      "src": "http://127.0.0.1:9199/v0/b/localhost/o/stores%2F5JVAqPA2KmZwR2DFnOJz%2Fbranding%2Flogo-1765434938188.jpg?alt=media&token=ee115acc-5c04-4903-a21f-9bef2b6deae7",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/assets/icons/icon-512x512.svg",
-      "type": "image/svg+xml",
+      "src": "http://127.0.0.1:9199/v0/b/localhost/o/stores%2F5JVAqPA2KmZwR2DFnOJz%2Fbranding%2Flogo-1765434938188.jpg?alt=media&token=ee115acc-5c04-4903-a21f-9bef2b6deae7",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ]
