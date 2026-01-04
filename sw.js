@@ -8,8 +8,8 @@ const OFFLINE_URL = "offline.html";
 // Les assets critiques pour que l'app fonctionne hors ligne.
 const CORE_ASSETS = [
   OFFLINE_URL,
-  "/css/main.css",
-  "/js/app.js",
+  "/assets/app-Db1lN2nx.css",
+  "/assets/app-MoPn_2t3.js",
   "/manifest.json", // Essentiel pour l'expérience PWA
   // On pourrait ajouter ici le logo principal ou des icônes critiques.
 ];
@@ -53,33 +53,33 @@ self.addEventListener("activate", (event) => {
 
 /**
  * À chaque requête, on applique une stratégie "Cache, falling back to Network".
+ * CRITIQUE : On ne traite que les requêtes GET locales pour éviter les doublons sur les trackers/API.
  */
 self.addEventListener("fetch", (event) => {
-  // On ignore les appels API, ils ne doivent JAMAIS être mis en cache.
-  if (event.request.url.includes("/api/")) {
-    return;
-  }
+  const url = new URL(event.request.url);
 
-  // On applique la stratégie pour toutes les autres requêtes (HTML, CSS, JS, images, etc.)
+  // 1. On ignore tout ce qui n'est pas GET (POST, PUT, etc. => direct réseau)
+  if (event.request.method !== "GET") return;
+
+  // 2. On ignore les appels API
+  if (url.pathname.includes("/api/")) return;
+
+  // 3. On ignore les domaines tiers (trackers google-analytics, etc. => direct réseau)
+  if (url.origin !== self.location.origin) return;
+
+  // On applique la stratégie pour les assets locaux (HTML, CSS, JS, images, fonts)
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      // Si on a la réponse en cache, on la sert immédiatement. C'est la priorité.
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+      if (cachedResponse) return cachedResponse;
 
-      // Si la ressource n'est pas en cache, on va la chercher sur le réseau.
       return fetch(event.request).catch(() => {
-        // Si le réseau est mort ET que la requête est une navigation vers une nouvelle page...
+        // Fallback offline uniquement pour la navigation
         if (event.request.mode === "navigate") {
-          // ... on sert notre page offline depuis le cache. C'est notre bunker.
           console.log(
-            "[Service Worker] Réseau indisponible, service de la page offline."
+            "[Service Worker] Réseau indisponible, fallback offline."
           );
           return caches.match(OFFLINE_URL);
         }
-        // Pour les autres assets (images, fonts, etc.), si ça plante et que ce n'est pas en cache, ça plantera.
-        // C'est un comportement acceptable pour les ressources non critiques.
       });
     })
   );
