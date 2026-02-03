@@ -18,6 +18,14 @@ body {
   color: var(--text-color, #111827);
 }
 
+.text-muted {
+  color: var(--text-muted-color, #6b7280) !important;
+}
+
+.border-muted {
+  border-color: var(--card-border-color, #e5e7eb) !important;
+}
+
 /* ===================================
 //  SECTION 2 : COMPOSANTS DE BASE
 // =================================== */
@@ -30,7 +38,9 @@ body {
   font-weight: bold;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -48,7 +58,9 @@ body {
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   cursor: pointer;
-  transition: background-color 0.2s ease-out, color 0.2s ease-out,
+  transition:
+    background-color 0.2s ease-out,
+    color 0.2s ease-out,
     border-color 0.2s ease-out;
   text-align: center;
   display: inline-block;
@@ -202,7 +214,9 @@ body.is-home [data-zflex-section="hero"] section {
   justify-content: center;
   font-size: 12px;
   border: 2px solid var(--bg-color);
-  transition: transform 0.2s ease-in-out, background-color 0.2s;
+  transition:
+    transform 0.2s ease-in-out,
+    background-color 0.2s;
 }
 #cart-btn .cart-badge.updated {
   transform: scale(1.3);
@@ -218,9 +232,16 @@ body.is-home [data-zflex-section="hero"] section {
   transition: opacity 0.3s ease-in-out;
 }
 #search-modal-content {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 }
 #search-modal.hidden #search-modal-content {
   transform: translateY(-20px);
   opacity: 0;
+}
+
+/* --- UNSPLASH CREDITS PROTECTION --- */
+#unsplash-credits-dialog.hidden {
+  display: none !important;
 }
